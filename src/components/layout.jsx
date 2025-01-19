@@ -59,7 +59,7 @@ function AppLayout() {
       <Layout className="relative min-w-[1080px] ">
         <Header
           style={{ zIndex: 1 }}
-          className="h-[82px] w-[1160px] fixed left-[280px] bg-[#003465] border-x-2 text-white rounded-e-lg"
+          className="h-[82px] w-[1160px] fixed left-[280px] bg-[#003465] border-x-2 text-white rounded-e-2xl"
         >
           <AppHeader />
         </Header>

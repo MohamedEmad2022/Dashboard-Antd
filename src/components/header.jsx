@@ -24,7 +24,7 @@ function AppHeader() {
   ];
   return (
     <div className="flex justify-end ">
-      <Flex gap={32} align="center" className="h-[82px] mr-5">
+      <Flex gap={32} align="center" className="h-[82px]  mr-[55px]">
         <SettingOutlined className="text-2xl" />
         <img className="w-[24px] h-[24px]" src={Group3} alt="" />
 
