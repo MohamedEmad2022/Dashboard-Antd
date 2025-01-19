@@ -1,14 +1,23 @@
 import PInformation from "./forms/pInformation";
 import React, { useState } from "react";
-import { Layout, Form, Button, Steps, Breadcrumb, Row, Col } from "antd";
+import {
+  Layout,
+  Form,
+  Button,
+  Steps,
+  Breadcrumb,
+  Row,
+  Col,
+  Flex,
+  ConfigProvider,
+} from "antd";
 import Sidebar from "./sidebar";
 import AppHeader from "./header";
 import { useStateContext } from "../context/contextProvider";
 import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
-  LeftSquareOutlined,
-  RightSquareOutlined,
+ 
 } from "@ant-design/icons";
 import FormModal from "./formModal";
 
@@ -39,71 +48,84 @@ function AppLayout() {
   };
 
   return (
-    <Layout className="h-screen relative">
+    <Layout className="max-w-[1440px]">
       <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => setCollapsed(broken)}
-        collapsible
-        trigger={null}
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-        width={250}
-        className="bg-blue-900 text-white"
+        width={280}
+        className="bg-[#003465] text-white fixed min-h-[1024px]"
       >
         <Sidebar />
       </Sider>
-      <Button
-        className={`z-50 bg-blue-900 text-white border-0 ${
-          collapsed ? "left-0" : "left-60"
-        }`}
-        icon={collapsed ? <RightSquareOutlined /> : <LeftSquareOutlined />}
-        onClick={() => setCollapsed(!collapsed)}
-        style={{
-          fontSize: "30px",
-          width: 50,
-          height: 50,
-          position: "fixed",
-        }}
-      />
-      <Layout>
-        <Header className="bg-blue-900 text-white rounded-e-lg">
+
+      <Layout className="relative min-w-[1080px] ">
+        <Header
+          style={{ zIndex: 1 }}
+          className="h-[82px] w-[1160px] fixed left-[280px] bg-[#003465] border-x-2 text-white rounded-e-lg"
+        >
           <AppHeader />
         </Header>
-        <Content className="p-4 bg-white rounded shadow">
+        <Content className=" max-w-[1080px] absolute top-[108px] left-[300px] bg-white h-[883px] rounded">
           <>
             <FormModal />
-            <Row className="flex justify-between mb-4">
-              <Col>
+            <Row className="flex justify-between border-b">
+              <Col className="mb-6">
                 <Breadcrumb separator=" >>">
                   <Breadcrumb.Item className="text-xl font-bold ">
                     All Employees
                   </Breadcrumb.Item>
-                  <Breadcrumb.Item className="text-xl text-blue-900 font-bold ">
+                  <Breadcrumb.Item className="text-xl text-[#003465] font-bold ">
                     New
                   </Breadcrumb.Item>
                 </Breadcrumb>
               </Col>
               <Col>
-                <Button onClick={() => setIsWarningModal(true)}>Discard</Button>
-                <Button
-                  onClick={() => setIsModalOpen(true)}
-                  className="bg-blue-900 text-white px-7 ml-2"
-                >
-                  Save
-                </Button>
+                <Flex gap={12}>
+                  <Button
+                    className="w-[108px] h-[38px] text-[#003465] rounded-[7px] border-[#003465]"
+                    onClick={() => setIsWarningModal(true)}
+                  >
+                    Discard
+                  </Button>
+                  <Button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-[#003465] text-white w-[108px] h-[38px] rounded-[7px] "
+                  >
+                    Save
+                  </Button>
+                </Flex>
               </Col>
             </Row>
-
-            <Steps current={currentStep} percent={percent}>
-              {steps.map((item, index) => (
-                <Step key={index} title={item.title} />
-              ))}
-            </Steps>
-
+            <ConfigProvider
+              theme={{
+                components: {
+                  Steps: {
+                    lineWidth: 2,
+                  },
+                },
+                token: {
+                  colorPrimary: "#04B051",
+                  colorTextPlaceholder: "#595958",
+                  colorInfo: "#04B051",
+                  fontSize: 16,
+                  fontWeightStrong: 500,
+                },
+              }}
+            >
+              <div className="w-[1032px] h-[80px] mt-7">
+                <Steps
+                  size="small"
+                  labelPlacement="vertical"
+                  current={currentStep}
+                  percent={percent}
+                >
+                  {steps.map((item, index) => (
+                    <Step key={index} title={item.title} />
+                  ))}
+                </Steps>
+              </div>
+            </ConfigProvider>
             {fields[currentStep]}
 
-            <div className="col-span-2 flex justify-end">
+            <div className="flex justify-end  w-[1032px]">
               <Button
                 icon={<ArrowLeftOutlined />}
                 onClick={prev}

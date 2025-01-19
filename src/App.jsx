@@ -1,17 +1,12 @@
-
-import './App.css'
-import AppLayout from './components/layout'
-import Sidebar from './components/sidebar'
+import "./App.css";
+import AppLayout from "./components/layout";
 
 function App() {
-  
-
   return (
     <>
       <AppLayout />
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;

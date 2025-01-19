@@ -1,0 +1,17 @@
+.custom-select .ant-select-selector {
+  padding: 10px 14px;
+  height: 44px !important;
+  border-radius: 8px;
+
+  background-color: #fff;
+}
+
+.custom-dropdown .ant-select-item-option-active {
+  background-color: #e6f7ff;
+}
+
+.ant-form-item-label > label {
+  font-weight: 700;
+  font-size: 16px;
+  color: #323f49;
+}

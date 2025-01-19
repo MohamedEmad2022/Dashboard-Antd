@@ -1,10 +1,11 @@
-import { Avatar, Badge, Dropdown, Space } from "antd";
+import {Dropdown, Flex, Space } from "antd";
 import React from "react";
 import {
   DownOutlined,
-  RadiusUpleftOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import MaskGroup from "../assets/MaskGroup.png";
+import Group3 from "../assets/Group3.png";
 
 function AppHeader() {
   const items = [
@@ -23,11 +24,9 @@ function AppHeader() {
   ];
   return (
     <div className="flex justify-end ">
-      <div className="flex justify-center items-center space-x-4">
+      <Flex gap={32} align="center" className="h-[82px] mr-5">
         <SettingOutlined className="text-2xl" />
-        <Badge dot>
-          <RadiusUpleftOutlined className="text-2xl text-white" />
-        </Badge>
+        <img className="w-[24px] h-[24px]" src={Group3} alt="" />
 
         <Dropdown
           menu={{
@@ -35,12 +34,12 @@ function AppHeader() {
           }}
           trigger={["click"]}
         >
-          <Space>
-            <Avatar>M</Avatar>
+          <Space size={16}>
+            <img className="w-[50px] h-[50px]" src={MaskGroup} alt="" />
             <DownOutlined />
           </Space>
         </Dropdown>
-      </div>
+      </Flex>
     </div>
   );
 }
