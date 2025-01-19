@@ -42,7 +42,7 @@ const PInformation = ({ title }) => {
 
   return (
     <div className="w-[1036px] ">
-      <h1 className="text-2xl text-[#003465] font-bold mt-10 mb-3">{title}</h1>
+      <h1 className="text-2xl text-[#003465] font-bold mt-20 mb-3">{title}</h1>
       <ConfigProvider
         theme={{
           token: {

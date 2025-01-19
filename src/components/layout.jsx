@@ -50,16 +50,17 @@ function AppLayout() {
   return (
     <Layout className="max-w-[1440px]">
       <Sider
+      style={{ borderRadius: ' 0 0 16px 0 ' }}
         width={280}
         className="bg-[#003465] text-white fixed min-h-[1024px]"
       >
         <Sidebar />
       </Sider>
 
-      <Layout className="relative min-w-[1080px] ">
+      <Layout className="relative  ">
         <Header
-          style={{ zIndex: 1 }}
-          className="h-[82px] w-[1160px] fixed left-[280px] bg-[#003465] border-x-2 text-white rounded-e-2xl"
+          style={{ zIndex: 1, borderRadius: ' 0 0 16px 0 ' }}
+          className="h-[82px] pl-0 pr-10  fixed top-0 left-[280px] right-0 bg-[#003465] border-x-2 text-white "
         >
           <AppHeader />
         </Header>
