@@ -111,8 +111,9 @@ function AppLayout() {
                 },
               }}
             >
-              <div className="w-[1032px] h-[80px] mt-7">
+              <div className="w-[1032px] my-7">
                 <Steps
+                
                   size="small"
                   labelPlacement="vertical"
                   current={currentStep}
