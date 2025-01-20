@@ -10,6 +10,7 @@ import {
   Col,
   Flex,
   ConfigProvider,
+  Progress,
 } from "antd";
 import Sidebar from "./sidebar";
 import AppHeader from "./header";
@@ -20,6 +21,7 @@ import {
  
 } from "@ant-design/icons";
 import FormModal from "./formModal";
+import Vector from "../assets/Vector.png"
 
 function AppLayout() {
   const { Step } = Steps;
@@ -117,12 +119,35 @@ function AppLayout() {
                   size="small"
                   labelPlacement="vertical"
                   current={currentStep}
-                  percent={percent}
+                  
                 >
                   {steps.map((item, index) => (
-                    <Step key={index} title={item.title} />
+                    <Step
+                    icon={
+                      <>
+                      <Progress
+                      format={()=>{
+                       if(index < currentStep){
+                        return(
+                          <div className="flex justify-center ">
+                            <img className="size-[12px] p-[1px] border-[#04B051] border-2 rounded-full" src={Vector} alt="" />
+                          </div>
+                        )
+                       }else{
+                        return index +1
+                       }
+                      }}
+                      size={30} type="circle" percent={currentStep === index ? percent : currentStep > index ? 100 : 0} strokeColor="#04B051" status={index === currentStep ? "active" : index < currentStep ? "success" : "normal" }  />
+                      </>
+                    }
+                    key={index} title={item.title} />
                   ))}
                 </Steps>
+                {/* {steps.map((item, index) => (
+                    <Progress type="circle" percent={50} strokeColor="green"  />
+                  ))} */}
+                
+                
               </div>
             </ConfigProvider>
             {fields[currentStep]}
